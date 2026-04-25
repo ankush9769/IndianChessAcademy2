@@ -1,3 +1,9 @@
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+
+if (process.env.NODE_ENV === "development") {
+  initOpenNextCloudflareForDev();
+}
+
 const nextConfig = {
   eslint: {
     // Warning: This allows production builds to successfully complete even if
@@ -9,10 +15,8 @@ const nextConfig = {
     // your project has type errors.
     ignoreBuildErrors: true,
   },
-  experimental: {
-    // Ensure Next.js traces files relative to this workspace root
-    outputFileTracingRoot: process.cwd(),
-  },
+  // Ensure Next.js traces files relative to this workspace root
+  outputFileTracingRoot: process.cwd(),
 };
 
 export default nextConfig;
